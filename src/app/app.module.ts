@@ -4,25 +4,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { FormsModule } from '@angular/forms';
-import {AngularFireModule} from '@angular/fire/compat';
-import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
-import {environment } from 'src/environments/environment';
-import {FormGroupName } from '@angular/forms';
-import {AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import {CrudService } from './crud.service';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from 'src/environments/environment';
+import { FormGroupName } from '@angular/forms';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { CrudService } from './crud.service';
+import { DashboradComponent } from './dashborad/dashborad.component';
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent, DashboradComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
   ],
   providers: [CrudService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

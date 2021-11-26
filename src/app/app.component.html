@@ -9,47 +9,329 @@
 
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
+  <h1 style="margin-top: 25px">
+    {{ title }}
+  </h1>
 
-    <h1 style="margin-top: 25px;">
-      {{title}}
-    </h1>
-  
-    <div class="row" style="margin-top: 25px;">
-      <div class="col-md-3">
+  <!-- <div class="row" style="margin-top: 25px;">
+      <div class="col-md-4">
         <input type="text" class="form-control" [(ngModel)]="productName" placeholder="Name">
       </div>
   
-      <div class="col-md-3">
+      <div class="col-md-8">
         <button type="button" (click)="CreateRecord()" [disabled]="!productName" class="btn btn-primary">+
           Create Product</button>
       </div>
+    </div> -->
+
+  <div class="card" style="height: '28rem'">
+    <div class="card-header" style="text-align: center">
+      Enter container details
     </div>
-    <div class="row" style="margin-top: 25px;">
+    <img
+      src="https://i.pinimg.com/736x/e5/0b/39/e50b393b5da79699efa03a2b36145dec.jpg"
+      alt="container img"
+      class="card-img-top"
+      style="height: 5rem"
+    />
+    <div class="row">
       <div class="col-md-3">
-        <div class="card" style="width: 18rem;" *ngFor="let item of products">
-          <div class="card-body" *ngIf="!item.isEdit; else elseBlock">
-            <h5 class="card-title">{{item.Name['Name']}}</h5>
-            <a href="#" class="card-link" (click)="EditRecord(item)">Edit</a>
-            <a href="#" class="card-link" (click)="RemoveRecord(item.id)">Delete</a>
+        <img
+          src="https://image.shutterstock.com/image-illustration/blue-cargo-container-shipping-freight-260nw-1173499228.jpg"
+          alt="container img"
+          class="img-fluid rounded-starts"
+        />
+        <form>
+          <div class="form-group" style="text-align: center; margin-top: 1rem">
+            <input
+              type="file"
+              class="form-control-file"
+              id="exampleFormControlFile1"
+            />
+
+            <label for="exampleFormControlFile1" style="margin-top: 1rem"
+              >Upload Container Image</label
+            >
           </div>
-          <ng-template #elseBlock>
-            <div class="card-body">
-              <h5 class="card-title">Edit</h5>
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-md-12">
-                    <input type="text" class="form-control" [(ngModel)]="item.EditName.Name" placeholder="Edit Name">
-                  </div>
+        </form>
+      </div>
+      <div class="col-md-3">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="productName"
+          placeholder="Name"
+          style="margin-bottom: 0.5rem"
+        />
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="containerNo"
+          placeholder="ContainerNo"
+          style="margin-bottom: 0.5rem"
+        />
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="size"
+          placeholder="Size"
+          style="margin-bottom: 0.5rem"
+        />
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="type"
+          placeholder="Type"
+          style="margin-bottom: 0.5rem"
+        />
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="saleCondition"
+          placeholder="Sale Condition"
+          style="margin-bottom: 0.5rem"
+        />
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="color"
+          placeholder="Color"
+          style="margin-bottom: 0.5rem"
+        />
+      </div>
+      <div class="col-md-3">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="depot"
+          placeholder="Depot"
+          style="margin-bottom: 0.5rem"
+        />
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="manufactureDate"
+          placeholder="Manufacture Date"
+          style="margin-bottom: 0.5rem"
+        />
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="floor"
+          placeholder="Floor Type"
+          style="margin-bottom: 0.5rem"
+        />
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="payload"
+          placeholder="Payload"
+          style="margin-bottom: 0.5rem"
+        />
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="tare"
+          placeholder="Tare Weight"
+          style="margin-bottom: 0.5rem"
+        />
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="maxGrossWeight"
+          placeholder="Max Gross Weight"
+          style="margin-bottom: 0.5rem"
+        />
+      </div>
+    </div>
+    <div class="card-footer" style="text-align: center">
+      <button
+        type="button"
+        (click)="CreateRecord()"
+        [disabled]="!productName"
+        class="btn btn-primary"
+        style="margin-right: 0.5rem"
+      >
+        <span class="fa fa-search" style="margin-right: 0.5rem"></span>Search
+      </button>
+      <button
+        type="button"
+        (click)="CreateRecord()"
+        [disabled]="!productName"
+        class="btn btn-primary"
+        style="margin-right: 0.5rem"
+      >
+        <span class="fa fa-plus" style="margin-right: 0.5rem"></span> Create
+      </button>
+      <button
+        type="button"
+        (click)="CreateRecord()"
+        [disabled]="!productName"
+        class="btn btn-primary"
+        style="margin-right: 0.5rem"
+      >
+        <span class="fa fa-edit" style="margin-right: 0.5rem"></span> Update
+      </button>
+      <button
+        type="button"
+        (click)="CreateRecord()"
+        [disabled]="!productName"
+        class="btn btn-primary"
+        style="margin-right: 0.5rem"
+      >
+        <span class="fa fa-trash-o" style="margin-right: 0.5rem"></span> Delete
+      </button>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 25px">
+    <div class="col-md-12">
+      <div
+        class="card"
+        style="width: 80rem; margin-bottom: 1rem; height: auto"
+        *ngFor="let item of products"
+      >
+        <div class="row">
+          <div class="col-md-3">
+            <img
+              src="https://image.shutterstock.com/image-illustration/blue-cargo-container-shipping-freight-260nw-1173499228.jpg"
+              alt="container img"
+              class="img-fluid rounded-starts"
+            />
+          </div>
+
+          <div class="col-md-9">
+            <div class="card-body" *ngIf="!item.isEdit; else elseBlock">
+              <div class="row">
+                <div class="col-md-4">
+                  <h5 class="card-title">{{ item.Name["Name"] }}</h5>
+                  <p class="card-text">
+                    ContainerNo: {{ item.Name["containerNo"] }}
+                  </p>
+                  <p class="card-text">Size: {{ item.Name["size"] }}</p>
+                  <p class="card-text">Type: {{ item.Name["type"] }}</p>
+                  <p class="card-text">
+                    SaleCondition: {{ item.Name["saleCondition"] }}
+                  </p>
+                  <p class="card-text">Color: {{ item.Name["color"] }}</p>
+                </div>
+                <div class="col-md-4">
+                  <p class="card-text">Depot: {{ item.Name["depot"] }}</p>
+                  <p class="card-text">
+                    Man.Date: {{ item.Name["manufactureDate"] }}
+                  </p>
+                  <p class="card-text">Floor: {{ item.Name["floor"] }}</p>
+                  <p class="card-text">Payload: {{ item.Name["payload"] }}</p>
+                  <p class="card-text">Tare: {{ item.Name["tare"] }}</p>
+                  <p class="card-text">
+                    Max.Gross: {{ item.Name["maxGrossWeight"] }}
+                  </p>
+                </div>
+                <div class="col-md-4">
+                  <a href="#" class="card-link" (click)="EditRecord(item)"
+                    >Edit</a
+                  >
+                  <a href="#" class="card-link" (click)="RemoveRecord(item.id)"
+                    >Delete</a
+                  >
                 </div>
               </div>
-  
-              <a href="#" class="card-link" (click)="item.isEdit = false">Cancel</a>
-              <a href="#" class="card-link" (click)="UpdateRecord(item)">Update</a>
             </div>
-          </ng-template>
+
+            <ng-template #elseBlock>
+              <div class="card-body">
+                <h5 class="card-title">Edit</h5>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.Name"
+                        placeholder="Edit Name"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.ContainerNo"
+                        placeholder="Edit ContainerNo"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.Size"
+                        placeholder="Edit Size"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.Type"
+                        placeholder="Edit Type"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.SaleCondition"
+                        placeholder="Edit SaleCondition"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.Color"
+                        placeholder="Edit Color"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.Depot"
+                        placeholder="Edit Depot"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.ManufactureDate"
+                        placeholder="Edit ManufactureDate"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.Floor"
+                        placeholder="Edit Floor"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.Payload"
+                        placeholder="Edit Payload"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.Tare"
+                        placeholder="Edit Tare"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.MaxGross"
+                        placeholder="Edit MaxGross"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <a href="#" class="card-link" (click)="item.isEdit = false"
+                  >Cancel</a
+                >
+                <a href="#" class="card-link" (click)="UpdateRecord(item)"
+                  >Update</a
+                >
+              </div>
+            </ng-template>
+          </div>
         </div>
       </div>
     </div>
-  
-  
   </div>
+</div>
