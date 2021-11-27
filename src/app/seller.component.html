@@ -1,0 +1,361 @@
+<!-- <div class="container">
+  <div class="row">
+      <div class="col-md-8"><label class="form-label">Product Name</label>
+        <input type="text" class="form-control" [(ngModel)]="productName" placeholder="productName" />
+        <button class="btn btn-primary" type="button" (click)="CreateRecord()">Save</button>
+        </div>
+  </div>
+</div> -->
+
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+  <!-- <h1 style="margin-top: 25px">
+    {{ title }}
+  </h1> -->
+
+  <!-- <div class="row" style="margin-top: 25px;">
+        <div class="col-md-4">
+          <input type="text" class="form-control" [(ngModel)]="productName" placeholder="Name">
+        </div>
+    
+        <div class="col-md-8">
+          <button type="button" (click)="CreateRecord()" [disabled]="!productName" class="btn btn-primary">+
+            Create Product</button>
+        </div>
+      </div> -->
+
+  <div class="card" style="height: '28rem'">
+    <div class="card-header" style="text-align: center">
+      Enter container details
+    </div>
+
+    <img
+      src="https://mdbcdn.b-cdn.net/img/Photos/Others/intro1.jpg"
+      alt="container img"
+      class="card-img-top"
+      style="height: 5rem"
+    />
+    <div class="row">
+      <div class="col-md-3">
+        <img
+          src="https://www.icon-container.de/media/images/finder/container/standard-container-20-dry-van-02.jpg"
+          alt="container img"
+          class="img-fluid rounded-starts input-image"
+        />
+        <form>
+          <div class="form-group" style="text-align: center; margin-top: 1rem">
+            <input
+              type="file"
+              class="form-control-file"
+              id="exampleFormControlFile1"
+            />
+
+            <label for="exampleFormControlFile1" style="margin-top: 1rem"
+              >Upload Container Image</label
+            >
+          </div>
+        </form>
+      </div>
+      <div class="col-md-3">
+        <input
+          type="text"
+          class="form-control input-style"
+          [(ngModel)]="productName"
+          placeholder="Name"
+        />
+        <input
+          type="text"
+          class="form-control input-style"
+          [(ngModel)]="containerNo"
+          placeholder="ContainerNo"
+        />
+        <input
+          type="text"
+          class="form-control input-style"
+          [(ngModel)]="size"
+          placeholder="Size"
+        />
+        <input
+          type="text"
+          class="form-control input-style"
+          [(ngModel)]="type"
+          placeholder="Type"
+        />
+        <input
+          type="text"
+          class="form-control input-style"
+          [(ngModel)]="saleCondition"
+          placeholder="Sale Condition"
+        />
+        <input
+          type="text"
+          class="form-control input-style"
+          [(ngModel)]="color"
+          placeholder="Color"
+        />
+      </div>
+      <div class="col-md-3">
+        <input
+          type="text"
+          class="form-control input-style"
+          [(ngModel)]="depot"
+          placeholder="Depot"
+        />
+        <input
+          type="text"
+          class="form-control input-style"
+          [(ngModel)]="manufactureDate"
+          placeholder="Manufacture Date"
+          onfocus="(this.type='date')"
+        />
+        <input
+          type="text"
+          class="form-control input-style"
+          [(ngModel)]="floor"
+          placeholder="Floor Type"
+        />
+        <input
+          type="text"
+          class="form-control input-style"
+          [(ngModel)]="payload"
+          placeholder="Payload"
+        />
+        <input
+          type="text"
+          class="form-control input-style"
+          [(ngModel)]="tare"
+          placeholder="Tare Weight"
+        />
+        <input
+          type="text"
+          class="form-control input-style"
+          [(ngModel)]="maxGrossWeight"
+          placeholder="Max Gross Weight"
+        />
+      </div>
+      <div class="col-md-3">
+        <input
+          type="text"
+          class="form-control input-style"
+          [(ngModel)]="imagePath"
+          placeholder="Image Path"
+          value="https://image.shutterstock.com/image-illustration/blue-cargo-container-shipping-freight-260nw-1173499228.jpg"
+        />
+        <input
+          type="text"
+          class="form-control input-style"
+          [(ngModel)]="price"
+          placeholder="Unit Price"
+        />
+      </div>
+    </div>
+    <div class="card-footer" style="text-align: center">
+      <button
+        type="button"
+        (click)="CreateRecord()"
+        class="btn btn-primary input-button"
+      >
+        <span class="fa fa-search input-btn-span"></span> Search
+      </button>
+      <button
+        type="button"
+        (click)="CreateRecord()"
+        [disabled]="!containerNo"
+        class="btn btn-primary input-button"
+      >
+        <span class="fa fa-plus input-btn-span"></span> Create
+      </button>
+      <button
+        type="button"
+        (click)="CreateRecord()"
+        [disabled]="!containerNo"
+        class="btn btn-primary input-button"
+      >
+        <span class="fa fa-edit input-btn-span"></span> Update
+      </button>
+      <button
+        type="button"
+        (click)="CreateRecord()"
+        [disabled]="!containerNo"
+        class="btn btn-primary input-button"
+      >
+        <span class="fa fa-trash-o input-btn-span"></span> Delete
+      </button>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 25px">
+    <div class="col-md-12">
+      <div
+        class="card"
+        style="width: 80rem; margin-bottom: 1rem; height: auto"
+        *ngFor="let item of products"
+      >
+        <div class="row">
+          <div class="col-md-3">
+            <div class="bg-image hover-zoom">
+              <img
+                src="{{ item.Name['imagePath'] }}"
+                alt="container img"
+                class="img-fluid rounded-starts"
+              />
+            </div>
+          </div>
+
+          <div class="col-md-9">
+            <div class="card-body" *ngIf="!item.isEdit; else elseBlock">
+              <div class="row">
+                <div class="col-md-4">
+                  <h5 class="card-title">
+                    {{ item.Name["Name"] }}
+                  </h5>
+                  <p class="card-text">
+                    ContainerNo: {{ item.Name["containerNo"] }}
+                  </p>
+                  <p class="card-text">Size: {{ item.Name["size"] }}</p>
+                  <p class="card-text">Type: {{ item.Name["type"] }}</p>
+                  <p class="card-text">
+                    SaleCondition: {{ item.Name["saleCondition"] }}
+                  </p>
+                  <p class="card-text">Color: {{ item.Name["color"] }}</p>
+                </div>
+                <div class="col-md-4">
+                  <p class="card-text">Depot: {{ item.Name["depot"] }}</p>
+                  <p class="card-text">
+                    Man.Date: {{ item.Name["manufactureDate"] }}
+                  </p>
+                  <p class="card-text">Floor: {{ item.Name["floor"] }}</p>
+                  <p class="card-text">Payload: {{ item.Name["payload"] }}</p>
+                  <p class="card-text">Tare: {{ item.Name["tare"] }}</p>
+                  <p class="card-text">
+                    Max.Gross: {{ item.Name["maxGrossWeight"] }}
+                  </p>
+
+                  <p class="card-text">Unit Price: {{ item.Name["price"] }}</p>
+                </div>
+                <div class="col-md-4">
+                  <a href="#" class="card-link" (click)="EditRecord(item)"
+                    >Edit</a
+                  >
+                  <a href="#" class="card-link" (click)="RemoveRecord(item.id)"
+                    >Delete</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <ng-template #elseBlock>
+              <div class="card-body">
+                <h5 class="card-title">Edit</h5>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.Name"
+                        placeholder="Edit Name"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.ContainerNo"
+                        placeholder="Edit ContainerNo"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.Size"
+                        placeholder="Edit Size"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.Type"
+                        placeholder="Edit Type"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.SaleCondition"
+                        placeholder="Edit SaleCondition"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.Color"
+                        placeholder="Edit Color"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.Depot"
+                        placeholder="Edit Depot"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.ManufactureDate"
+                        placeholder="Edit ManufactureDate"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.Floor"
+                        placeholder="Edit Floor"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.Payload"
+                        placeholder="Edit Payload"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.Tare"
+                        placeholder="Edit Tare"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="item.EditName.MaxGross"
+                        placeholder="Edit MaxGross"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <a href="#" class="card-link" (click)="item.isEdit = false"
+                  >Cancel</a
+                >
+                <a href="#" class="card-link" (click)="UpdateRecord(item)"
+                  >Update</a
+                >
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav aria-label="...">
+  <ul class="pagination pagination-circle">
+    <li class="page-item">
+      <a class="page-link">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active" aria-current="page">
+      <a class="page-link" href="#"
+        >2 <span class="visually-hidden">(current)</span></a
+      >
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
