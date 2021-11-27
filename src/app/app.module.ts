@@ -11,8 +11,12 @@ import { FormGroupName } from '@angular/forms';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { CrudService } from './crud.service';
 import { DashboradComponent } from './dashborad/dashborad.component';
+import { SellerComponent } from './seller.component';
+import { ShopComponent } from './shop.component';
+import { HomeComponent } from './home/home.component';
+import { ContactComponent } from './contact/contact.component';
 @NgModule({
-  declarations: [AppComponent, DashboradComponent],
+  declarations: [AppComponent, DashboradComponent, SellerComponent, ShopComponent, HomeComponent, ContactComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

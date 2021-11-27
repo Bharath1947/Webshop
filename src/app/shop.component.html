@@ -1,0 +1,63 @@
+<div class="container">
+  <!-- Side Filter start -->
+  <!-- <div class="col-xl-3"></div> -->
+  <!-- Side Filter end -->
+  <!-- Main Content start -->
+  <!-- <div class="col-xl-9"> -->
+  <!-- Above card row start -->
+  <div class="row">
+    <!-- Card col start -->
+    <!-- <div class="col-md-3"> -->
+    <!-- Card 1 start -->
+    <div class="card col-md-3 product-card" *ngFor="let item of products">
+      <div class="card-header">
+        <h5>{{ item.Name["Name"] }}</h5>
+      </div>
+      <!-- Card 1 body image start -->
+      <div class="bg-image hover-zoom">
+        <img
+          src="{{ item.Name['imagePath'] }}"
+          alt="container img"
+          class="img-fluid rounded-starts product-img"
+        />
+      </div>
+      <!-- Card 1 body image end -->
+      <!-- Card 1 body start -->
+      <div class="card-body">
+        <h6 class="card-title">
+          {{ item.Name["price"] }}
+        </h6>
+        <p>Size: {{ item.Name["size"] }} | Type: {{ item.Name["type"] }}</p>
+
+        <div class="card-footer">
+          <p>Location: {{ item.Name["depot"] }}</p>
+        </div>
+        <!-- Card 1 body end -->
+      </div>
+      <!-- Card 1 end -->
+      <!-- </div> -->
+      <!-- Card col end -->
+    </div>
+    <!-- Above card row end -->
+    <!-- </div> -->
+    <!-- Main Content end -->
+  </div>
+
+  <nav aria-label="...">
+    <ul class="pagination pagination-circle">
+      <li class="page-item">
+        <a class="page-link">Previous</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item active" aria-current="page">
+        <a class="page-link" href="#"
+          >2 <span class="visually-hidden">(current)</span></a
+        >
+      </li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>
