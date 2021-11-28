@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CrudService } from './crud.service';
+import { CrudService } from '../services/crud.service';
 
 @Component({
   selector: 'seller',
@@ -21,8 +21,9 @@ export class SellerComponent implements OnInit {
   payload: string | undefined;
   tare: string | undefined;
   maxGrossWeight: string | undefined;
-  price: string | undefined;
+  price: number | undefined;
   imagePath: string | undefined;
+  iso: string | undefined;
 
   constructor(private crudService: CrudService) {}
 
@@ -42,7 +43,7 @@ export class SellerComponent implements OnInit {
 
   CreateRecord() {
     //let record ={};
-    let record: { [key: string]: string } = {};
+    let record: { [key: string]: string | number } = {};
     //record['Name'] = this.productName!;
     record['Name'] = this.productName
       ? this.productName.toUpperCase()
@@ -70,6 +71,7 @@ export class SellerComponent implements OnInit {
     record['imagePath'] = this.imagePath
       ? this.imagePath
       : 'https://www.icon-container.de/media/images/finder/container/standard-container-20-dry-van-02.jpg';
+    record['iso'] = this.iso || '';
 
     this.crudService
       .create_NewProduct(record)
@@ -86,8 +88,9 @@ export class SellerComponent implements OnInit {
         this.payload = '';
         this.tare = '';
         this.maxGrossWeight = '';
-        this.price = '';
+        this.price = 0;
         this.imagePath = '';
+        this.iso = '';
         console.log(resp);
       })
       .catch((error) => {
@@ -114,6 +117,7 @@ export class SellerComponent implements OnInit {
     record.EditName.tare = record.tare;
     record.EditName.maxGrossWeight = record.maxGrossWeight;
     record.EditName.price = record.price;
+    record.EditName.iso = record.iso;
 
     // record.EditName = record.containerNo;
   }
@@ -133,6 +137,7 @@ export class SellerComponent implements OnInit {
     record['tare'] = recordRow.EditName['tare'];
     record['maxGrossWeight'] = recordRow.EditName['maxGrossWeight'];
     record['price'] = recordRow.EditName['price'];
+    record['iso'] = recordRow.EditName['iso'];
     this.crudService.update_Product(recordRow.id, record);
     recordRow.isEdit = false;
   }

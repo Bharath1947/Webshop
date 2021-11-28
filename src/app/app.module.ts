@@ -9,14 +9,23 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from 'src/environments/environment';
 import { FormGroupName } from '@angular/forms';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { CrudService } from './crud.service';
+import { CrudService } from './services/crud.service';
 import { DashboradComponent } from './dashborad/dashborad.component';
-import { SellerComponent } from './seller.component';
-import { ShopComponent } from './shop.component';
+import { SellerComponent } from './seller/seller.component';
+import { ShopComponent } from './shop/shop.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
+import { CartSideComponent } from './cart-side/cart-side.component';
 @NgModule({
-  declarations: [AppComponent, DashboradComponent, SellerComponent, ShopComponent, HomeComponent, ContactComponent],
+  declarations: [
+    AppComponent,
+    DashboradComponent,
+    SellerComponent,
+    ShopComponent,
+    HomeComponent,
+    ContactComponent,
+    CartSideComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,6 +35,6 @@ import { ContactComponent } from './contact/contact.component';
     AngularFireDatabaseModule,
   ],
   providers: [CrudService],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent, CartSideComponent],
 })
 export class AppModule {}

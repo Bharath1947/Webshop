@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CrudService } from './crud.service';
+import { CrudService } from '../services/crud.service';
 
 @Component({
   selector: 'shop',
   templateUrl: './shop.component.html',
-  styleUrls: [`./shop.component.scss`],
+  styleUrls: ['./shop.component.scss', './rating.scss'],
 })
 export class ShopComponent implements OnInit {
   products: any;
@@ -12,7 +12,7 @@ export class ShopComponent implements OnInit {
   containerNo: string | undefined;
   size: string | undefined;
   type: string | undefined;
-  price: string | undefined;
+  price: number | undefined;
   imagePath: string | undefined;
   constructor(private crudService: CrudService) {}
 

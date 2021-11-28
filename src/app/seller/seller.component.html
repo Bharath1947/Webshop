@@ -147,6 +147,12 @@
           [(ngModel)]="price"
           placeholder="Unit Price"
         />
+        <input
+          type="text"
+          class="form-control input-style"
+          [(ngModel)]="iso"
+          placeholder="iso"
+        />
       </div>
     </div>
     <div class="card-footer" style="text-align: center">
@@ -231,7 +237,10 @@
                     Max.Gross: {{ item.Name["maxGrossWeight"] }}
                   </p>
 
-                  <p class="card-text">Unit Price: {{ item.Name["price"] }}</p>
+                  <p class="card-text">
+                    Unit Price: <i class="fas fa-rupee"></i
+                    >{{ item.Name["price"] }}
+                  </p>
                 </div>
                 <div class="col-md-4">
                   <a href="#" class="card-link" (click)="EditRecord(item)"

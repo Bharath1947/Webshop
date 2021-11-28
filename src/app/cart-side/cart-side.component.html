@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="card col-md-12 product-card" *ngFor="let item of products">
+      <div class="card-header iso">
+        {{ item.Name["iso"] }}
+      </div>
+      <div class="bg-image hover-zoom">
+        <img
+          src="{{ item.Name['imagePath'] }}"
+          alt="container img"
+          class="img-fluid rounded-starts product-img"
+        />
+      </div>
+      <div class="card-body price">
+        <i class="fas fa-rupee"></i> {{ item.Name["price"] }}
+      </div>
+    </div>
+  </div>
+</div>
