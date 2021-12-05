@@ -1,12 +1,59 @@
+.product-card {
+  width: 19rem;
+  margin: 1rem 1rem 1rem 1rem;
+  text-align: center;
+  height: auto;
+}
+
+.button-style {
+  margin-right: 0.5rem;
+}
+
+.link-style {
+  background: royalblue;
+  color: white;
+  font-weight: bold;
+}
+
+.filter-div {
+  border: 1px solid black;
+  margin-top: 2rem;
+}
+
+.input-style {
+  margin-top: 0.5rem;
+}
+
+label {
+  /* Other styling... */
+  text-align: right;
+  clear: both;
+  float: left;
+  margin-right: 15px;
+}
+
+.filter-heading {
+  margin-top: 0.5rem;
+}
+
+.div-style {
+  margin-top: 0.5rem;
+  text-align: center;
+  height: 5rem;
+}
+
+.filter-div {
+  position: sticky;
+}
 .product-img {
   box-shadow: 0px 0px 0px 0px;
   width: 15rem;
-  height: 15rem;
+  height: 12rem;
+  transition: transform 0.2s;
 }
 
-.product-card {
-  width: 18rem;
-  margin: 1rem 1rem 1rem 1rem;
-  margin-right: 1rem;
-  height: auto;
+.product-img:hover {
+  transform: scale(
+    1.2
+  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }

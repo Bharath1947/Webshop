@@ -1,79 +1,341 @@
-<div class="container">
-  <!-- Side Filter start -->
-  <!-- <div class="col-xl-3"></div> -->
-  <!-- Side Filter end -->
-  <!-- Main Content start -->
-  <!-- <div class="col-xl-9"> -->
-  <!-- Above card row start -->
+<div
+  class="container-fluid"
+  id="shopMainDiv"
+  [style.display]="showShop ? 'block' : 'none'"
+>
   <div class="row">
-    <!-- Card col start -->
-    <!-- <div class="col-md-3"> -->
-    <!-- Card 1 start -->
-    <div class="card col-md-3 product-card" *ngFor="let item of products">
-      <div class="card-header">
-        <h5>{{ item.Name["Name"] }}</h5>
-      </div>
-      <!-- Card 1 body image start -->
-      <div class="bg-image hover-zoom">
-        <img
-          src="{{ item.Name['imagePath'] }}"
-          alt="container img"
-          class="img-fluid rounded-starts product-img"
-        />
-      </div>
-      <!-- Card 1 body image end -->
-      <!-- Card 1 body start -->
-      <div class="card-body">
-        <h6 class="card-title">
-          <i class="fas fa-rupee"></i> {{ item.Name["price"] }}
-        </h6>
-        <p>Size: {{ item.Name["size"] }} | Type: {{ item.Name["type"] }}</p>
-        <div class="rating">
-          <input type="radio" name="rating" value="5" id="5" /><label for="5"
-            >☆</label
-          >
-          <input type="radio" name="rating" value="4" id="4" /><label for="4"
-            >☆</label
-          >
-          <input type="radio" name="rating" value="3" id="3" /><label for="3"
-            >☆</label
-          >
-          <input type="radio" name="rating" value="2" id="2" /><label for="2"
-            >☆</label
-          >
-          <input type="radio" name="rating" value="1" id="1" /><label for="1"
-            >☆</label
-          >
+    <div class="col-md-3">
+      <div class="card filter-div" style="margin-top: 1rem">
+        <div class="card-header">
+          <h6><i class="fas fa-filter"></i> Product Filter</h6>
         </div>
-        <div class="card-footer">
-          <p>Location: {{ item.Name["depot"] }}</p>
-        </div>
-        <!-- Card 1 body end -->
-      </div>
-      <!-- Card 1 end -->
-      <!-- </div> -->
-      <!-- Card col end -->
-    </div>
-    <!-- Above card row end -->
-    <!-- </div> -->
-    <!-- Main Content end -->
-  </div>
+        <div class="card-body">
+          <h6>Property</h6>
+          <hr />
 
-  <nav aria-label="...">
-    <ul class="pagination pagination-circle">
-      <li class="page-item">
-        <a class="page-link">Previous</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item active" aria-current="page">
-        <a class="page-link" href="#"
-          >2 <span class="visually-hidden">(current)</span></a
-        >
-      </li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li>
-    </ul>
-  </nav>
+          <select
+            id="sizeDropDown"
+            class="form-select"
+            aria-label="Default select example"
+          >
+            <option selected>Select Size</option>
+            <option *ngFor="let item of products" [value]="item.Product.size">
+              {{ item.Product.size }}ft - {{ item.Product.size }}feet
+            </option>
+          </select>
+
+          <select
+            class="form-select input-style"
+            aria-label="Default select example"
+          >
+            <option selected>Select Type</option>
+            <option *ngFor="let item of products" [value]="item.Product.type">
+              {{ item.Product.type }}
+            </option>
+          </select>
+
+          <select
+            class="form-select input-style"
+            aria-label="Default select example"
+          >
+            <option selected>Select SaleCondition</option>
+            <option
+              *ngFor="let item of products"
+              [value]="item.Product.saleCondition"
+            >
+              {{ item.Product.saleCondition }}
+            </option>
+          </select>
+
+          <select
+            class="form-select input-style"
+            aria-label="Default select example"
+          >
+            <option selected>Select Color</option>
+            <option *ngFor="let item of products" [value]="item.Product.color">
+              {{ item.Product.color }}
+            </option>
+          </select>
+
+          <select
+            class="form-select input-style"
+            aria-label="Default select example"
+          >
+            <option selected>Select Floor</option>
+            <option *ngFor="let item of products" [value]="item.Product.floor">
+              {{ item.Product.floor }}
+            </option>
+          </select>
+          <h6 class="filter-heading">Capacity</h6>
+          <hr />
+
+          <select
+            id="sizeDropDown"
+            class="form-select input-style"
+            aria-label="Default select example"
+          >
+            <option selected>Select Payload</option>
+            <option
+              *ngFor="let item of products"
+              [value]="item.Product.payload"
+            >
+              {{ item.Product.payload }}
+            </option>
+          </select>
+          <select
+            id="sizeDropDown"
+            class="form-select input-style"
+            aria-label="Default select example"
+          >
+            <option selected>Select MaxGross</option>
+            <option
+              *ngFor="let item of products"
+              [value]="item.Product.maxGrossWeight"
+            >
+              {{ item.Product.maxGrossWeight }}
+            </option>
+          </select>
+          <select
+            id="sizeDropDown"
+            class="form-select input-style"
+            aria-label="Default select example"
+          >
+            <option selected>Select TareWeight</option>
+            <option
+              *ngFor="let item of products"
+              [value]="item.Product.maxGrossWeight"
+            >
+              {{ item.Product.tare }}
+            </option>
+          </select>
+          <h6 class="filter-heading">Location</h6>
+          <hr />
+          <select
+            id="sizeDropDown"
+            class="form-select input-style"
+            aria-label="Default select example"
+          >
+            <option selected>Select Depot</option>
+            <option
+              *ngFor="let item of products"
+              [value]="item.Product.maxGrossWeight"
+            >
+              {{ item.Product.depot }}
+            </option>
+          </select>
+          <select
+            id="sizeDropDown"
+            class="form-select input-style"
+            aria-label="Default select example"
+          >
+            <option selected>Select City</option>
+            <option
+              *ngFor="let item of products"
+              [value]="item.Product.maxGrossWeight"
+            >
+              {{ item.Product.depot }}
+            </option>
+          </select>
+          <select
+            id="sizeDropDown"
+            class="form-select input-style"
+            aria-label="Default select example"
+          >
+            <option selected>Select Country</option>
+            <option
+              *ngFor="let item of products"
+              [value]="item.Product.maxGrossWeight"
+            >
+              {{ item.Product.depot }}
+            </option>
+          </select>
+          <select
+            id="sizeDropDown"
+            class="form-select input-style"
+            aria-label="Default select example"
+          >
+            <option selected>Select Region</option>
+            <option
+              *ngFor="let item of products"
+              [value]="item.Product.maxGrossWeight"
+            >
+              {{ item.Product.depot }}
+            </option>
+          </select>
+          <select
+            id="sizeDropDown"
+            class="form-select input-style"
+            aria-label="Default select example"
+          >
+            <option selected>Select Continent</option>
+            <option
+              *ngFor="let item of products"
+              [value]="item.Product.maxGrossWeight"
+            >
+              {{ item.Product.depot }}
+            </option>
+          </select>
+          <h6 class="filter-heading">Others</h6>
+          <hr />
+          <select
+            id="sizeDropDown"
+            class="form-select input-style"
+            aria-label="Default select example"
+          >
+            <option selected>Select Age</option>
+            <option
+              *ngFor="let item of products"
+              [value]="item.Product.maxGrossWeight"
+            >
+              {{ item.Product.depot }}
+            </option>
+          </select>
+          <select
+            id="sizeDropDown"
+            class="form-select input-style"
+            aria-label="Default select example"
+          >
+            <option selected>Select Price</option>
+            <option
+              *ngFor="let item of products"
+              [value]="item.Product.maxGrossWeight"
+            >
+              {{ item.Product.depot }}
+            </option>
+          </select>
+          <select
+            id="sizeDropDown"
+            class="form-select input-style"
+            aria-label="Default select example"
+          >
+            <option selected>Select Usage</option>
+            <option
+              *ngFor="let item of products"
+              [value]="item.Product.maxGrossWeight"
+            >
+              {{ item.Product.depot }}
+            </option>
+          </select>
+          <select
+            id="sizeDropDown"
+            class="form-select input-style"
+            aria-label="Default select example"
+          >
+            <option selected>Select Brand</option>
+            <option
+              *ngFor="let item of products"
+              [value]="item.Product.maxGrossWeight"
+            >
+              {{ item.Product.depot }}
+            </option>
+          </select>
+          <select
+            id="sizeDropDown"
+            class="form-select input-style"
+            aria-label="Default select example"
+          >
+            <option selected>Select Owner</option>
+            <option
+              *ngFor="let item of products"
+              [value]="item.Product.maxGrossWeight"
+            >
+              {{ item.Product.depot }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="container">
+        <div class="row">
+          <div class="card col-md-3 product-card" *ngFor="let item of products">
+            <div class="div-style">
+              <h6>{{ item.Product.Name }}</h6>
+            </div>
+
+            <img
+              src="{{ item.Product['imagePath'] }}"
+              alt="container img"
+              class="img-fluid rounded-starts product-img"
+            />
+
+            <div class="card-body" style="text-align: center">
+              <h6 class="card-title">
+                {{ item.Product["price"] | currency: "INR":"symbol":"1.2" }}
+              </h6>
+              <p>
+                Size: {{ item.Product["size"] }} | Type:
+                {{ item.Product["type"] }} | ISO: {{ item.Product["iso"] }}
+              </p>
+              <div class="rating">
+                <input type="radio" name="rating" value="5" id="5" /><label
+                  for="5"
+                  >☆</label
+                >
+                <input type="radio" name="rating" value="4" id="4" /><label
+                  for="4"
+                  >☆</label
+                >
+                <input type="radio" name="rating" value="3" id="3" /><label
+                  for="3"
+                  >☆</label
+                >
+                <input type="radio" name="rating" value="2" id="2" /><label
+                  for="2"
+                  >☆</label
+                >
+                <input type="radio" name="rating" value="1" id="1" /><label
+                  for="1"
+                  >☆</label
+                >
+              </div>
+              <button class="btn btn-danger button-style" type="button">
+                <i class="fab fa-opencart"></i> Buy
+              </button>
+              <button
+                class="btn btn-warning button-style"
+                type="button"
+                style="color: white"
+              >
+                <i class="fas fa-cart-plus" style="color: white"></i>Cart
+              </button>
+              <a [routerLink]="['/detail', item.id]">
+                <button class="btn btn-primary" (click)="btnClick()">
+                  <i class="far fa-eye"></i>View
+                </button>
+              </a>
+              <div class="card-footer">
+                <p>Location: {{ item.Product["depot"] }}</p>
+                <!-- <button class="btn btn-primary" (click)="btnClick()">View</button> -->
+                <!-- <a [routerLink]="['/detail', item.Name['containerNo']]"></a> -->
+                <!-- <a routerLink="/detail/{{ item.id }}]">View</a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav aria-label="...">
+        <ul class="pagination pagination-circle">
+          <li class="page-item">
+            <a class="page-link">Previous</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="#"
+              >2 <span class="visually-hidden">(current)</span></a
+            >
+          </li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<div>
+  <router-outlet></router-outlet>
 </div>

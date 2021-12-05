@@ -38,23 +38,29 @@
     <div class="row">
       <div class="col-md-3">
         <img
-          src="https://www.icon-container.de/media/images/finder/container/standard-container-20-dry-van-02.jpg"
+          src="https://www.pikpng.com/pngl/b/363-3632522_shipping-container-png-shipping-container-clipart.png"
           alt="container img"
           class="img-fluid rounded-starts input-image"
         />
-        <form>
+        <!-- form start -->
+        <div>
           <div class="form-group" style="text-align: center; margin-top: 1rem">
             <input
               type="file"
-              class="form-control-file"
+              class="form-control-file input-style"
               id="exampleFormControlFile1"
             />
 
-            <label for="exampleFormControlFile1" style="margin-top: 1rem"
-              >Upload Container Image</label
-            >
+            <input
+              type="text"
+              class="form-control input-style"
+              [(ngModel)]="imagePath"
+              placeholder="Image Path"
+              value="https://image.shutterstock.com/image-illustration/blue-cargo-container-shipping-freight-260nw-1173499228.jpg"
+            />
           </div>
-        </form>
+        </div>
+        <!-- form start -->
       </div>
       <div class="col-md-3">
         <input
@@ -69,38 +75,68 @@
           [(ngModel)]="containerNo"
           placeholder="ContainerNo"
         />
-        <input
-          type="text"
-          class="form-control input-style"
+
+        <select
+          id="sizeDropDown"
+          class="form-select input-style"
+          aria-label="Default select example"
           [(ngModel)]="size"
-          placeholder="Size"
-        />
-        <input
-          type="text"
-          class="form-control input-style"
+        >
+          <option selected>Select Size</option>
+          <option *ngFor="let item of sizes">
+            {{ item.size.code }}
+          </option>
+        </select>
+
+        <select
+          id="typeDropDown"
+          class="form-select input-style"
+          aria-label="Default select example"
           [(ngModel)]="type"
-          placeholder="Type"
-        />
-        <input
-          type="text"
-          class="form-control input-style"
+        >
+          <option selected>Select Types</option>
+          <option *ngFor="let item of types">
+            {{ item.type.code }}
+          </option>
+        </select>
+
+        <select
+          id="conditionDropDown"
+          class="form-select input-style"
+          aria-label="Default select example"
           [(ngModel)]="saleCondition"
-          placeholder="Sale Condition"
-        />
-        <input
-          type="text"
-          class="form-control input-style"
+        >
+          <option selected>Select condition</option>
+          <option *ngFor="let item of conditions">
+            {{ item.condition.code }}
+          </option>
+        </select>
+
+        <select
+          id="colorDropDown"
+          class="form-select input-style"
+          aria-label="Default select example"
           [(ngModel)]="color"
-          placeholder="Color"
-        />
+        >
+          <option selected>Select color</option>
+          <option *ngFor="let item of colors">
+            {{ item.color.code }}
+          </option>
+        </select>
       </div>
       <div class="col-md-3">
-        <input
-          type="text"
-          class="form-control input-style"
+        <select
+          id="depotDropDown"
+          class="form-select input-style"
+          aria-label="Default select example"
           [(ngModel)]="depot"
-          placeholder="Depot"
-        />
+        >
+          <option selected>Select depot</option>
+          <option *ngFor="let item of depots">
+            {{ item.depot.code }}
+          </option>
+        </select>
+
         <input
           type="text"
           class="form-control input-style"
@@ -108,51 +144,71 @@
           placeholder="Manufacture Date"
           onfocus="(this.type='date')"
         />
-        <input
-          type="text"
-          class="form-control input-style"
+        <select
+          id="floorDropDown"
+          class="form-select input-style"
+          aria-label="Default select example"
           [(ngModel)]="floor"
-          placeholder="Floor Type"
-        />
+        >
+          <option selected>Select floor</option>
+          <option *ngFor="let item of floors">
+            {{ item.floor.code }}
+          </option>
+        </select>
+
         <input
-          type="text"
           class="form-control input-style"
           [(ngModel)]="payload"
           placeholder="Payload"
+          type="number"
+          id="payload"
+          name="payload"
+          min="100"
+          max="1000000"
         />
         <input
-          type="text"
           class="form-control input-style"
           [(ngModel)]="tare"
           placeholder="Tare Weight"
+          type="number"
+          id="tare"
+          name="tare"
+          min="100"
+          max="1000000"
         />
         <input
-          type="text"
           class="form-control input-style"
           [(ngModel)]="maxGrossWeight"
           placeholder="Max Gross Weight"
+          type="number"
+          id="maxGrossWeight"
+          name="maxGrossWeight"
+          min="100"
+          max="1000000"
         />
       </div>
       <div class="col-md-3">
         <input
-          type="text"
-          class="form-control input-style"
-          [(ngModel)]="imagePath"
-          placeholder="Image Path"
-          value="https://image.shutterstock.com/image-illustration/blue-cargo-container-shipping-freight-260nw-1173499228.jpg"
-        />
-        <input
-          type="text"
           class="form-control input-style"
           [(ngModel)]="price"
           placeholder="Unit Price"
+          type="number"
+          id="price"
+          name="price"
+          min="100"
+          max="1000000"
         />
-        <input
-          type="text"
-          class="form-control input-style"
+        <select
+          id="isoDropDown"
+          class="form-select input-style"
+          aria-label="Default select example"
           [(ngModel)]="iso"
-          placeholder="iso"
-        />
+        >
+          <option selected>Select iso</option>
+          <option *ngFor="let item of isos">
+            {{ item.iso.code }}
+          </option>
+        </select>
       </div>
     </div>
     <div class="card-footer" style="text-align: center">
@@ -201,10 +257,13 @@
           <div class="col-md-3">
             <div class="bg-image hover-zoom">
               <img
-                src="{{ item.Name['imagePath'] }}"
+                src="{{ item.Product['imagePath'] }}"
                 alt="container img"
                 class="img-fluid rounded-starts"
               />
+              <p class="card-text text-style">
+                ImagePath: {{ item.Product["imagePath"] | slice: 0:30 }}
+              </p>
             </div>
           </div>
 
@@ -213,36 +272,42 @@
               <div class="row">
                 <div class="col-md-4">
                   <h5 class="card-title">
-                    {{ item.Name["Name"] }}
+                    {{ item.Product["Name"] }}
                   </h5>
                   <p class="card-text">
-                    ContainerNo: {{ item.Name["containerNo"] }}
+                    ContainerNo: {{ item.Product["containerNo"] }}
                   </p>
-                  <p class="card-text">Size: {{ item.Name["size"] }}</p>
-                  <p class="card-text">Type: {{ item.Name["type"] }}</p>
+                  <p class="card-text">Size: {{ item.Product["size"] }}</p>
+                  <p class="card-text">Type: {{ item.Product["type"] }}</p>
                   <p class="card-text">
-                    SaleCondition: {{ item.Name["saleCondition"] }}
+                    SaleCondition: {{ item.Product["saleCondition"] }}
                   </p>
-                  <p class="card-text">Color: {{ item.Name["color"] }}</p>
+                  <p class="card-text">Color: {{ item.Product["color"] }}</p>
                 </div>
                 <div class="col-md-4">
-                  <p class="card-text">Depot: {{ item.Name["depot"] }}</p>
+                  <p class="card-text">Depot: {{ item.Product["depot"] }}</p>
                   <p class="card-text">
-                    Man.Date: {{ item.Name["manufactureDate"] }}
+                    Man.Date:
+                    {{ item.Product["manufactureDate"] | date: "fullDate" }}
                   </p>
-                  <p class="card-text">Floor: {{ item.Name["floor"] }}</p>
-                  <p class="card-text">Payload: {{ item.Name["payload"] }}</p>
-                  <p class="card-text">Tare: {{ item.Name["tare"] }}</p>
+                  <p class="card-text">Floor: {{ item.Product["floor"] }}</p>
                   <p class="card-text">
-                    Max.Gross: {{ item.Name["maxGrossWeight"] }}
+                    Payload: {{ item.Product["payload"] }}
                   </p>
-
+                  <p class="card-text">Tare: {{ item.Product["tare"] }}</p>
                   <p class="card-text">
-                    Unit Price: <i class="fas fa-rupee"></i
-                    >{{ item.Name["price"] }}
+                    Max.Gross: {{ item.Product["maxGrossWeight"] }}
                   </p>
                 </div>
                 <div class="col-md-4">
+                  <p class="card-text">
+                    Unit Price:
+                    {{ item.Product["price"] | currency: "INR":"symbol":"1.2" }}
+                  </p>
+                  <p class="card-text">
+                    ISO:
+                    {{ item.Product["iso"] }}
+                  </p>
                   <a href="#" class="card-link" (click)="EditRecord(item)"
                     >Edit</a
                   >
@@ -258,80 +323,100 @@
                 <h5 class="card-title">Edit</h5>
                 <div class="form-group">
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                       <input
                         type="text"
-                        class="form-control"
-                        [(ngModel)]="item.EditName.Name"
+                        class="form-control input-style"
+                        [(ngModel)]="item.Product.EditName"
                         placeholder="Edit Name"
                       />
                       <input
                         type="text"
-                        class="form-control"
-                        [(ngModel)]="item.EditName.ContainerNo"
+                        class="form-control input-style"
+                        [(ngModel)]="item.Product.EditContainerNo"
                         placeholder="Edit ContainerNo"
                       />
                       <input
                         type="text"
-                        class="form-control"
-                        [(ngModel)]="item.EditName.Size"
+                        class="form-control input-style"
+                        [(ngModel)]="item.Product.EditSize"
                         placeholder="Edit Size"
                       />
                       <input
                         type="text"
-                        class="form-control"
-                        [(ngModel)]="item.EditName.Type"
+                        class="form-control input-style"
+                        [(ngModel)]="item.Product.EditType"
                         placeholder="Edit Type"
                       />
                       <input
                         type="text"
-                        class="form-control"
-                        [(ngModel)]="item.EditName.SaleCondition"
+                        class="form-control input-style"
+                        [(ngModel)]="item.Product.EditSaleCondition"
                         placeholder="Edit SaleCondition"
                       />
                       <input
                         type="text"
-                        class="form-control"
-                        [(ngModel)]="item.EditName.Color"
+                        class="form-control input-style"
+                        [(ngModel)]="item.Product.EditColor"
                         placeholder="Edit Color"
                       />
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                       <input
                         type="text"
-                        class="form-control"
-                        [(ngModel)]="item.EditName.Depot"
+                        class="form-control input-style"
+                        [(ngModel)]="item.Product.EditDepot"
                         placeholder="Edit Depot"
                       />
                       <input
                         type="text"
-                        class="form-control"
-                        [(ngModel)]="item.EditName.ManufactureDate"
+                        class="form-control input-style"
+                        [(ngModel)]="item.Product.EditManufactureDate"
                         placeholder="Edit ManufactureDate"
                       />
                       <input
                         type="text"
-                        class="form-control"
-                        [(ngModel)]="item.EditName.Floor"
+                        class="form-control input-style"
+                        [(ngModel)]="item.Product.EditFloor"
                         placeholder="Edit Floor"
                       />
                       <input
                         type="text"
-                        class="form-control"
-                        [(ngModel)]="item.EditName.Payload"
+                        class="form-control input-style"
+                        [(ngModel)]="item.Product.EditPayload"
                         placeholder="Edit Payload"
                       />
                       <input
                         type="text"
-                        class="form-control"
-                        [(ngModel)]="item.EditName.Tare"
+                        class="form-control input-style"
+                        [(ngModel)]="item.Product.EditTare"
                         placeholder="Edit Tare"
                       />
                       <input
                         type="text"
-                        class="form-control"
-                        [(ngModel)]="item.EditName.MaxGross"
+                        class="form-control input-style"
+                        [(ngModel)]="item.Product.EditMaxGrossWeight"
                         placeholder="Edit MaxGross"
+                      />
+                    </div>
+                    <div class="col-md-4">
+                      <input
+                        type="text"
+                        class="form-control input-style"
+                        [(ngModel)]="item.Product.EditPrice"
+                        placeholder="Edit UnitPrice"
+                      />
+                      <input
+                        type="text"
+                        class="form-control input-style"
+                        [(ngModel)]="item.Product.EditIso"
+                        placeholder="Edit ISO"
+                      />
+                      <input
+                        type="text"
+                        class="form-control input-style"
+                        [(ngModel)]="item.Product.EditImagePath"
+                        placeholder="Edit ImagePath"
                       />
                     </div>
                   </div>
