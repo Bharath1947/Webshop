@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card product-card">
+        <div class="card-header div-style">
+          ContainerNo: {{ resProduct.containerNo }}
+        </div>
+        <div class="bg-image hover-zoom">
+          <img
+            src="{{ resProduct.imagePath }}"
+            alt="container img"
+            class="img-fluid rounded-starts product-img"
+          />
+        </div>
+        <div class="card-body div-style">
+          <h6 class="card-title">
+            {{ resProduct.price | currency: "INR":true:"1.2" }}
+          </h6>
+          <p>Size: {{ resProduct.size }} | Type: {{ resProduct.type }}</p>
+          <div class="card-footer">
+            <p>Location: {{ resProduct.depot }}</p>
+            <button class="btn btn-danger button-style" type="button">
+              <i class="fab fa-opencart"></i> Buy
+            </button>
+            <button class="btn btn-warning button-style" type="button">
+              <i class="fas fa-cart-plus" style="color: white"></i> Cart
+            </button>
+            <a routerLink="/shop"
+              ><button class="btn btn-primary button-style">
+                <i class="fa fa-arrow-left"></i> Back
+              </button></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card product-card">
+        <div class="card-header">
+          <h5>{{ resProduct.Name }}</h5>
+        </div>
+
+        <div class="card-body">
+          <h6 class="card-title">
+            <h6>Container Property</h6>
+            <hr />
+          </h6>
+          <!-- <p>Size: {{ resSize.description }}</p> -->
+          <p>MaxGross: {{ resProduct.masGrossWeight }}</p>
+          <p>Tare: {{ resProduct.tare }}</p>
+
+          <h6 class="card-title">
+            <h6>Capacity Information</h6>
+            <hr />
+          </h6>
+          <p>Payload: {{ resProduct.payload }} kg</p>
+          <p>MaxGross: {{ resProduct.masGrossWeight }}</p>
+          <p>Tare: {{ resProduct.tare }}</p>
+          <div class="card-footer">
+            <p>Related Products</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

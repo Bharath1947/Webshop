@@ -16,6 +16,18 @@ import { ShopComponent } from './shop/shop.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { CartSideComponent } from './cart-side/cart-side.component';
+import { DetailComponent } from './detail/detail.component';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+
+const appRoutes: Routes = [
+  { path: 'detail/:id', component: DetailComponent },
+  { path: 'shop', component: ShopComponent },
+  // { path: '', redirectTo: '/shop', pathMatch: 'full' },
+  // { path: '**', component: ShopComponent },
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +37,9 @@ import { CartSideComponent } from './cart-side/cart-side.component';
     HomeComponent,
     ContactComponent,
     CartSideComponent,
+    DetailComponent,
+    LoginComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +48,7 @@ import { CartSideComponent } from './cart-side/cart-side.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [CrudService],
   bootstrap: [AppComponent, CartSideComponent],

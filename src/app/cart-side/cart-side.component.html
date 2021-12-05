@@ -12,7 +12,7 @@
         />
       </div>
       <div class="card-body price">
-        <i class="fas fa-rupee"></i> {{ item.Name["price"] }}
+        {{ item.Name["price"] | currency: "INR":"symbol":"1.2" }}
       </div>
     </div>
   </div>

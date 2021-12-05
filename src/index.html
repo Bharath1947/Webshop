@@ -34,12 +34,20 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css"
     />
+
     <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <link rel="stylesheet" href="./assets/css/Simple-Slider.css" />
     <!-- For Home Slider -->
     <link rel="stylesheet" href="./assets/css/Contact-Form-Clean.css" />
-    <link rel="stylesheet" href="./styles.scss" />
+    <!-- <link rel="stylesheet" href="./styles.scss" /> -->
+    <!-- For Dropdown work -->
+    <!-- <link
+      rel="stylesheet"
+      href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    /> -->
+
+    <!-- For Dropdown work -->
   </head>
 
   <body>
@@ -49,7 +57,7 @@
         class="closebtn"
         onclick="closeHoverCart()"
         style="font-size: 16px"
-        >Cart</a
+        ><i class="fas fa-cart-arrow-down icons-style">Cart</i></a
       >
       <cart-side></cart-side>
     </div>
@@ -58,7 +66,7 @@
     </div> -->
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
       <!-- Container wrapper -->
       <div class="container-fluid">
         <!-- Collapsible wrapper -->
@@ -350,12 +358,19 @@
     </footer>
     <!-- Footer -->
     <!-- For Home Slider -->
-    <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
     <script src="./assets/js/Simple-Slider.js"></script>
-    <script src="./script.js"></script>
+    <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- For Dropdown work -->
+    <!-- <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+    <!-- For Dropdown work -->
+    <!-- <script src="./script.js"></script> -->
     <!-- For Home Slider -->
+
     <script>
       function openHoverCart() {
         document.getElementById("mySidenavCart").style.width = "120px";
@@ -363,6 +378,21 @@
       function closeHoverCart() {
         document.getElementById("mySidenavCart").style.width = "0";
       }
+
+      // window.onscroll = function () {
+      //   myFunction();
+      // };
+
+      // var navbar = document.getElementById("navbar");
+      // var sticky = navbar.offsetTop;
+
+      // function myFunction() {
+      //   if (window.pageYOffset >= sticky) {
+      //     navbar.classList.add("sticky");
+      //   } else {
+      //     navbar.classList.remove("sticky");
+      //   }
+      // }
     </script>
   </body>
 </html>

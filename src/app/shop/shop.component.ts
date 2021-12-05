@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../services/crud.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'shop',
@@ -14,7 +15,8 @@ export class ShopComponent implements OnInit {
   type: string | undefined;
   price: number | undefined;
   imagePath: string | undefined;
-  constructor(private crudService: CrudService) {}
+  showShop: boolean = true;
+  constructor(private crudService: CrudService, private router: Router) {}
 
   ngOnInit() {
     this.crudService.read_Products().subscribe((data) => {
@@ -23,10 +25,16 @@ export class ShopComponent implements OnInit {
           //rdata: e.payload.doc.data()
           id: e.payload.doc.id,
           isEdit: false,
-          Name: e.payload.doc.data(),
+          Product: e.payload.doc.data(),
         };
       });
       console.log(this.products);
     });
+  }
+
+  btnClick() {
+    //this.router.navigateByUrl('/detail');
+    this.showShop = !this.showShop;
+    //shopMainDiv;
   }
 }
