@@ -10,8 +10,61 @@
           <h6><i class="fas fa-filter"></i> Product Filter</h6>
         </div>
         <div class="card-body">
+          <h6 class="filter-heading">Age & Cost</h6>
+          <hr />
+          <button (click)="testClick()">testClick</button>
+          <label for="customRange2" class="form-label">Select Age Range</label>
+          <input
+            type="range"
+            class="form-range"
+            min="0"
+            max="100"
+            id="customRange2"
+          />
+          <label for="customRange2" class="form-label"
+            >Select Price Range</label
+          >
+          <input
+            type="range"
+            class="form-range"
+            min="0"
+            max="100"
+            id="customRange2"
+          />
+
           <h6>Property</h6>
           <hr />
+
+          <form>
+            <div class="multiselect">
+              <div class="selectBox" (click)="showCheckboxes()">
+                <select>
+                  <option>Select an option</option>
+                </select>
+                <div class="overSelect"></div>
+              </div>
+              <div id="checkboxes" [style.display]="styleVal">
+                <label for="Select Size">
+                  <input
+                    type="checkbox"
+                    value="Select Size"
+                    id="Select Size"
+                  />Select Size</label
+                >
+                <div *ngFor="let item of uSizes">
+                  <label [for]="item"
+                    ><input
+                      type="checkbox"
+                      [value]="item"
+                      [id]="item"
+                      (change)="sizeChange($event)"
+                    />
+                    {{ item }}</label
+                  >
+                </div>
+              </div>
+            </div>
+          </form>
 
           <select
             id="sizeDropDown"
@@ -20,7 +73,7 @@
           >
             <option selected>Select Size</option>
             <option *ngFor="let item of products" [value]="item.Product.size">
-              {{ item.Product.size }}ft - {{ item.Product.size }}feet
+              {{ item.Product.size }}
             </option>
           </select>
 
@@ -51,19 +104,28 @@
             class="form-select input-style"
             aria-label="Default select example"
           >
-            <option selected>Select Color</option>
-            <option *ngFor="let item of products" [value]="item.Product.color">
-              {{ item.Product.color }}
+            <option selected>Select Floor</option>
+            <option *ngFor="let item of products" [value]="item.Product.floor">
+              {{ item.Product.floor }}
             </option>
           </select>
 
+          <!-- <label class="mt-4" for="favcolor">Select Color:</label>
+          <input
+            class="mt-4"
+            type="color"
+            id="favcolor"
+            name="favcolor"
+            value="
+          #707071"
+          /> -->
           <select
             class="form-select input-style"
             aria-label="Default select example"
           >
-            <option selected>Select Floor</option>
+            <option selected>Select Color</option>
             <option *ngFor="let item of products" [value]="item.Product.floor">
-              {{ item.Product.floor }}
+              {{ item.Product.color }}
             </option>
           </select>
           <h6 class="filter-heading">Capacity</h6>
@@ -177,32 +239,7 @@
           </select>
           <h6 class="filter-heading">Others</h6>
           <hr />
-          <select
-            id="sizeDropDown"
-            class="form-select input-style"
-            aria-label="Default select example"
-          >
-            <option selected>Select Age</option>
-            <option
-              *ngFor="let item of products"
-              [value]="item.Product.maxGrossWeight"
-            >
-              {{ item.Product.depot }}
-            </option>
-          </select>
-          <select
-            id="sizeDropDown"
-            class="form-select input-style"
-            aria-label="Default select example"
-          >
-            <option selected>Select Price</option>
-            <option
-              *ngFor="let item of products"
-              [value]="item.Product.maxGrossWeight"
-            >
-              {{ item.Product.depot }}
-            </option>
-          </select>
+
           <select
             id="sizeDropDown"
             class="form-select input-style"
@@ -336,6 +373,6 @@
   </div>
 </div>
 
-<div>
+<div [style.display]="showShop ? 'none' : 'block'">
   <router-outlet></router-outlet>
 </div>

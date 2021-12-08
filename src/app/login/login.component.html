@@ -1,1 +1,78 @@
-<p>login works!</p>
+<div class="container" [style.display]="showSignup ? 'none' : 'block'">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <form method="post">
+        <div class="card log-card" style="text-align: 'center'">
+          <img
+            src="https://mdbcdn.b-cdn.net/img/Photos/Others/intro1.jpg"
+            alt="container img"
+            class="card-img-top"
+            style="height: 3rem"
+          />
+          <div class="card-body">
+            <img
+              src="./assets/images/maniraj.jpg"
+              class="rounded-circle fig-style"
+              height="100rem"
+              width="100rem"
+            />
+            <div class="mb-3 input-style">
+              <input
+                class="form-control"
+                type="email"
+                name="email"
+                placeholder="Email"
+              />
+            </div>
+            <div class="mb-3 input-style">
+              <input
+                class="form-control"
+                type="password"
+                name="password"
+                placeholder="Password"
+              />
+            </div>
+            <div class="mb-3 input-style">
+              <button
+                class="btn btn-primary d-block w-100 button-style"
+                type="submit"
+              >
+                Log In
+              </button>
+              <h6>Or sign in with</h6>
+              <button
+                class="btn btn-primary w-25 button-style"
+                style="color: white"
+              >
+                <i class="fa fa-google"></i>
+              </button>
+              <button
+                class="btn btn-primary w-25 button-style button-style2"
+                style="color: white"
+              >
+                <i class="fa fa-facebook"></i>
+              </button>
+              <button
+                class="btn btn-primary w-25 button-style button-style2"
+                style="color: white"
+              >
+                <i class="fa fa-twitter"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="link-style">Forgot password?</a>
+            <a><button (click)="signupClick()">Signup</button> </a>
+            <a><button (click)="backToShop()">Back To Shop</button> </a>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
+
+<div [style.display]="showSignup ? 'block' : 'none'">
+  <app-sign-up (loginClicked)="loginClick($event)"></app-sign-up>
+</div>
