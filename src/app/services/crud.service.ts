@@ -25,6 +25,26 @@ export class CrudService {
   delete_Product(itemID: any) {
     this.firestore.doc('Products/' + itemID).delete();
   }
+  // USER
+  create_NewUser(item: any) {
+    return this.firestore.collection('Users').add(item);
+  }
+  read_Users() {
+    return this.firestore.collection('Users').snapshotChanges();
+  }
+  update_User(itemID: any, item: any) {
+    this.firestore.doc('Users/' + itemID).update(item);
+  }
+
+  delete_User(itemID: any) {
+    this.firestore.doc('Users/' + itemID).delete();
+  }
+
+  read_Single_User(itemID: any) {
+    return this.firestore.collection('Users').doc(itemID).valueChanges();
+  }
+
+  // USER
 
   read_Sizes() {
     return this.firestore.collection('Sizes').snapshotChanges();

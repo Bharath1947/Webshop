@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CrudService } from './services/crud.service';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +6,16 @@ import { CrudService } from './services/crud.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  shopShareObj: { [key: string]: string } = {};
-  detailShareObj: { [key: string]: string } = {};
+  showLogin: boolean = false;
   constructor() {}
+
   ngOnInit() {}
+
+  userClick(login: any): void {
+    this.showLogin = login;
+    console.log('app - login ' + this.showLogin);
+  }
+  loginClick() {
+    this.showLogin = true;
+  }
 }

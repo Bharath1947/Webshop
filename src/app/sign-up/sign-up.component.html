@@ -1,1 +1,221 @@
-<p>sign-up works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <form method="post">
+        <div class="card log-card" style="text-align: 'left'">
+          <div class="row">
+            <div class="col-md-6 img-style">
+              <img
+                src="https://cdn.pixabay.com/photo/2019/09/20/05/28/ship-4490852_960_720.jpg"
+              />
+            </div>
+            <div class="col-md-6">
+              <div class="card-body">
+                <div class="card">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <img
+                        src="./assets/images/maniraj.jpg"
+                        height="100rem"
+                        width="100rem"
+                      />
+                    </div>
+                    <div class="col-md-8">
+                      <input
+                        class="form-control mt-2"
+                        type="text"
+                        [(ngModel)]="displayName"
+                        name="displayName"
+                        id="displayName"
+                        placeholder="Display Name"
+                      />
+                      <input
+                        class="form-control mt-2"
+                        type="text"
+                        [(ngModel)]="imagePath"
+                        name="imagePath"
+                        id="imagePath"
+                        placeholder="Image Path"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-2" style="text-align: left">
+                  Register Details
+                </div>
+                <hr />
+                <div class="mb-2">
+                  <!-- <label for="email">Email </label> -->
+                  <input
+                    class="form-control"
+                    type="email"
+                    [(ngModel)]="email"
+                    name="email"
+                    id="email"
+                    placeholder="Email"
+                  />
+                </div>
+                <div class="mb-2">
+                  <input
+                    class="form-control"
+                    type="text"
+                    [(ngModel)]="userName"
+                    name="userName"
+                    id="userName"
+                    placeholder="UserName"
+                  />
+                </div>
+                <div class="mb-2">
+                  <input
+                    class="form-control"
+                    type="phone"
+                    [(ngModel)]="mobileNo"
+                    name="mobileNo"
+                    id="mobileNo"
+                    placeholder="Mobile No"
+                  />
+                </div>
+                <div class="mb-2">
+                  <input
+                    class="form-control"
+                    type="password"
+                    [(ngModel)]="password"
+                    name="password"
+                    placeholder="Password"
+                  />
+                </div>
+                <div class="mb-2">
+                  <input
+                    class="form-control"
+                    type="password"
+                    name="confPassword"
+                    placeholder="Confim Password"
+                  />
+                </div>
+
+                <div class="mb-2" style="text-align: left">Billing Details</div>
+                <hr />
+                <div class="mb-2">
+                  <!-- <label for="email">Email </label> -->
+                  <input
+                    class="form-control"
+                    type="text"
+                    [(ngModel)]="company"
+                    name="company"
+                    id="company"
+                    placeholder="Company Name"
+                  />
+                </div>
+                <div class="mb-2 input-group" style="margin-bottom: 2rem">
+                  <!-- <span style="float: left"> -->
+                  <input
+                    class="form-control"
+                    type="text"
+                    style="width: 15rem"
+                    [(ngModel)]="firstName"
+                    name="firstName"
+                    id="firstName"
+                    placeholder="FirstName"
+                  />
+                  <!-- </span> -->
+                  <span class="input-group-btn" style="width: 0px"></span>
+                  <!-- <span style="float: right"> -->
+                  <input
+                    class="form-control"
+                    type="text"
+                    [(ngModel)]="lastName"
+                    name="lastName"
+                    id="lastName"
+                    style="width: 15rem"
+                    placeholder="Last Name"
+                  />
+                  <!-- </span> -->
+                </div>
+
+                <div class="mb-2 mt-2">
+                  <input
+                    class="form-control"
+                    type="text"
+                    [(ngModel)]="address"
+                    name="address"
+                    placeholder="Address"
+                  />
+                </div>
+                <div class="mb-2">
+                  <input
+                    class="form-control"
+                    type="text"
+                    [(ngModel)]="postalCode"
+                    name="postCode"
+                    placeholder="Zip/Postal Code"
+                  />
+                </div>
+                <div class="mb-2 input-group">
+                  <select
+                    id="typeDropDown"
+                    class="form-select"
+                    aria-label="Default select example"
+                    style="width: 10rem"
+                    [(ngModel)]="city"
+                  >
+                    <option selected>Select City</option>
+                    <option>Chennai</option>
+                  </select>
+
+                  <select
+                    id="typeDropDown"
+                    class="form-select"
+                    aria-label="Default select example"
+                    style="width: 10rem"
+                    [(ngModel)]="country"
+                  >
+                    <option selected>Select Country</option>
+                    <option>Chennai</option>
+                  </select>
+                  <select
+                    id="typeDropDown"
+                    class="form-select"
+                    aria-label="Default select example"
+                    style="width: 10rem"
+                    [(ngModel)]="region"
+                  >
+                    <option selected>Select Region</option>
+                    <option>Chennai</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <button
+                    class="btn btn-primary d-block w-100 button-style"
+                    type="submit"
+                    (click)="createUser()"
+                  >
+                    Submit
+                  </button>
+                  <div class="form-check">
+                    <input
+                      id="formCheck-1"
+                      class="form-check-input"
+                      type="checkbox"
+                    /><label class="form-check-label" for="formCheck-1"
+                      >I agree to the <a href="#">Terms of Service</a>
+                    </label>
+                    <a
+                      ><button (click)="backToLogin()">Back to login</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer" style="text-align: center">
+            <p>Thank You For Register!</p>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>

@@ -20,11 +20,22 @@ import { DetailComponent } from './detail/detail.component';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-
+import { NavComponent } from './nav/nav.component';
+import { FootComponent } from './foot/foot.component';
+import { TabComponent } from './tab/tab.component';
+import { BuyerComponent } from './buyer/buyer.component';
+//import { ajax, css } from "jquery";
+import * as $ from 'jquery';
 const appRoutes: Routes = [
   { path: 'detail/:id', component: DetailComponent },
   { path: 'shop', component: ShopComponent },
-  // { path: '', redirectTo: '/shop', pathMatch: 'full' },
+  // { path: 'login', component: LoginComponent },
+  // { path: 'signup', component: SignUpComponent },
+  // { path: 'sell', component: SellerComponent },
+  // { path: 'dashboard', component: DashboradComponent },
+  // { path: 'contact', component: ContactComponent },
+  // { path: 'app', component: AppComponent },
+  // { path: '', redirectTo: '', pathMatch: 'full' },
   // { path: '**', component: ShopComponent },
 ];
 
@@ -40,6 +51,10 @@ const appRoutes: Routes = [
     DetailComponent,
     LoginComponent,
     SignUpComponent,
+    NavComponent,
+    FootComponent,
+    TabComponent,
+    BuyerComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +66,6 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
   ],
   providers: [CrudService],
-  bootstrap: [AppComponent, CartSideComponent],
+  bootstrap: [AppComponent, FootComponent],
 })
 export class AppModule {}

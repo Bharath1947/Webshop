@@ -51,5 +51,6 @@ export class DetailComponent implements OnInit {
     // this.crudService.read_Single_Size(sizeCode).subscribe((res) => {
     //   this.resSize = res;
     // });
+    (<any>$('item-img-main')).imagezoomsl();
   }
 }
